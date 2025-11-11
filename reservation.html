@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Réservation - Salon Valentin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --charcoal: #2c3e50;
+      --silver: #bdc3c7;
+      --light-grey: #ecf0f1;
+      --gold: #d4af37;
+      --dark-charcoal: #1a252f;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Georgia', 'Times New Roman', serif;
+    }
+    
+    body {
+      background: var(--light-grey);
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+    
+    /* Header */
+    .reservation-header {
+      background: var(--charcoal);
+      color: #fff;
+      padding: 80px 20px;
+      text-align: center;
+    }
+    
+    .reservation-header h1 {
+      font-size: 3em;
+      font-weight: 300;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    
+    .back-btn {
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 1.1em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    
+    .back-btn:hover {
+      opacity: 0.8;
+    }
+    
+    /* Formulaire de réservation */
+    .reservation-section {
+      padding: 80px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    
+    .reservation-form {
+      background: #fff;
+      padding: 50px;
+      border-radius: 8px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    
+    .form-group {
+      margin-bottom: 25px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.1em;
+      color: var(--charcoal);
+      font-weight: bold;
+    }
+    
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid var(--silver);
+      border-radius: 4px;
+      font-size: 1em;
+      background: #fff;
+      transition: border 0.3s ease;
+    }
+    
+    .form-group input:focus, .form-group select:focus {
+      border-color: var(--gold);
+      outline: none;
+    }
+    
+    .time-slots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    
+    .time-slot {
+      padding: 12px;
+      background: var(--light-grey);
+      border: 1px solid var(--silver);
+      border-radius: 4px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .time-slot:hover {
+      background: var(--gold);
+      color: var(--charcoal);
+      border-color: var(--gold);
+    }
+    
+    .time-slot.selected {
+      background: var(--gold);
+      color: var(--charcoal);
+      border-color: var(--gold);
+    }
+    
+    .submit-btn {
+      background: var(--gold);
+      color: var(--charcoal);
+      padding: 15px 40px;
+      border: none;
+      border-radius: 4px;
+      font-size: 1.1em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 30px;
+      transition: background 0.3s ease;
+      font-weight: bold;
+    }
+    
+    .submit-btn:hover {
+      background: #e6c34d;
+    }
+    
+    /* Footer */
+    footer {
+      background: #1a252f;
+      color: var(--silver);
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.9em;
+      border-top: 1px solid var(--gold);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .reservation-header h1 {
+        font-size: 2.2em;
+      }
+      
+      .reservation-form {
+        padding: 30px 20px;
+      }
+      
+      .time-slots {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="reservation-header">
+  <h1>Réservez Votre Créneau</h1>
+  <p>Choisissez votre prestation et horaire</p>
+  <a href="index.html" class="back-btn">← Retour à l'accueil</a>
+</header>
+
+<section class="reservation-section">
+  <div class="reservation-form">
+    <div class="form-group">
+      <label for="service">Prestation</label>
+      <select id="service">
+        <option value="">Choisissez une prestation</option>
+        <option value="coupe-femme">Coupe Femme - 55€</option>
+        <option value="coupe-homme">Coupe Homme - 35€</option>
+        <option value="coloration">Coloration - 65€</option>
+        <option value="balayage">Balayage - 85€</option>
+        <option value="brushing">Brushing - 30€</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="date">Date</label>
+      <input type="date" id="date" min="">
+    </div>
+    
+    <div class="form-group">
+      <label>Créneaux disponibles</label>
+      <div class="time-slots">
+        <div class="time-slot">09:00</div>
+        <div class="time-slot">10:00</div>
+        <div class="time-slot">11:00</div>
+        <div class="time-slot">14:00</div>
+        <div class="time-slot">15:00</div>
+        <div class="time-slot">16:00</div>
+        <div class="time-slot">17:00</div>
+        <div class="time-slot">18:00</div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="name">Nom complet</label>
+      <input type="text" id="name" placeholder="Votre nom">
+    </div>
+    
+    <div class="form-group">
+      <label for="phone">Téléphone</label>
+      <input type="tel" id="phone" placeholder="Votre numéro">
+    </div>
+    
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Votre email">
+    </div>
+    
+    <button class="submit-btn">Confirmer la réservation</button>
+  </div>
+</section>
+
+<footer>
+  <p>Salon Valentin © 2024 - Coiffure mixte Paris 8e - Ouvert du lundi au samedi</p>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Date minimum = aujourd'hui
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('date').min = today;
+    
+    // Sélection des créneaux
+    const timeSlots = document.querySelectorAll('.time-slot');
+    timeSlots.forEach(slot => {
+      slot.addEventListener('click', function() {
+        timeSlots.forEach(s => s.classList.remove('selected'));
+        this.classList.add('selected');
+      });
+    });
+    
+    // Simulation envoi formulaire
+    document.querySelector('.submit-btn').addEventListener('click', function() {
+      alert('Merci ! Votre réservation a été envoyée. Nous vous confirmons par SMS.');
+    });
+  });
+</script>
+
+</body>
+</html>
