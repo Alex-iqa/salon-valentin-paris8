@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
   <title>Salon Valentin – Coiffure Paris 8e</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <style>
     :root {
       --charcoal: #2c3e50;
@@ -11,264 +12,80 @@
       --light-grey: #ecf0f1;
       --gold: #d4af37;
       --dark-charcoal: #1a252f;
+      --card-shadow: 0 10px 30px rgba(0,0,0,0.08);
     }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Georgia', 'Times New Roman', serif;
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Georgia',serif}
+    body{background:var(--light-grey);color:var(--charcoal);line-height:1.6;font-size:16px}
+    header{
+      min-height:48vh;padding:40px 20px;
+      background:url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#fff;position:relative;
     }
-    
-    body {
-      background: var(--light-grey);
-      color: var(--charcoal);
-      line-height: 1.6;
+    header::after{content:'';position:absolute;inset:0;background:rgba(44,62,80,0.65)}
+    header h1{position:relative;font-size:clamp(2.2em,6vw,3.6em);font-weight:300;letter-spacing:2px;text-transform:uppercase;z-index:1}
+    header p{position:relative;font-size:clamp(1em,2.5vw,1.2em);font-style:italic;z-index:1;max-width:640px}
+    .btn{position:relative;z-index:1;margin-top:22px;padding:12px 28px;border:2px solid var(--gold);background:transparent;color:#fff;text-decoration:none;text-transform:uppercase;letter-spacing:1.5px;border-radius:4px}
+    .btn:hover{background:var(--gold);color:var(--charcoal)}
+    section{padding:clamp(36px,6vw,80px) 20px;max-width:1200px;margin:0 auto}
+    h2{text-align:center;color:var(--charcoal);font-weight:300;letter-spacing:1px;margin-bottom:28px;font-size:clamp(1.6em,4vw,2.4em)}
+    /* services / gallery simplified */
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+    .service{background:#fff;padding:22px;border:1px solid var(--silver);text-align:center}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+    .gallery img{width:100%;height:200px;object-fit:cover;border-radius:4px;display:block}
+    /* CONTACT section: centered single-row cards */
+    .contact{
+      background:var(--dark-charcoal);
+      color:#fff;
+      padding:36px 16px;
+      border-radius:12px;
+      margin:20px auto;
+      max-width:1200px;
+      box-sizing:border-box;
     }
-    
-    /* Header vintage chic */
-    header {
-      height: 100vh;
-      background: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #fff;
-      position: relative;
+    .contact h2{color:#fff;margin-bottom:16px}
+    /* centered wrapper that limits width and centers cards */
+    .contact-inner{
+      display:flex;
+      justify-content:center; /* center the row */
+      align-items:stretch;
+      gap:18px;
+      flex-wrap:wrap;
+      max-width:980px;
+      margin:0 auto;
+      padding-top:8px;
     }
-    
-    header::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(44, 62, 80, 0.7);
+    .contact-item{
+      background:#fff;
+      color:var(--charcoal);
+      padding:18px;
+      border-radius:10px;
+      min-width:220px;
+      flex:0 1 300px; /* same base size */
+      box-shadow:var(--card-shadow);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      gap:6px;
     }
-    
-    header h1 {
-      position: relative;
-      font-size: 4em;
-      font-weight: 300;
-      letter-spacing: 3px;
-      margin-bottom: 20px;
-      z-index: 1;
-      text-transform: uppercase;
+    .contact-item p{margin:0}
+    .contact-link{color:var(--gold);text-decoration:none;font-weight:700}
+    footer{background:var(--dark-charcoal);color:var(--silver);text-align:center;padding:28px 16px;margin-top:30px;border-top:3px solid var(--gold)}
+    /* responsive tweaks */
+    @media (max-width:768px){
+      header{min-height:40vh}
+      .gallery img{height:160px}
+      .contact{padding:24px 12px}
+      .contact-inner{gap:14px}
+      .contact-item{min-width:180px;padding:14px}
     }
-    
-    header p {
-      position: relative;
-      font-size: 1.4em;
-      font-style: italic;
-      z-index: 1;
-      max-width: 600px;
-    }
-    
-    .btn {
-      background: transparent;
-      color: #fff;
-      padding: 15px 40px;
-      border: 2px solid var(--gold);
-      border-radius: 2px;
-      font-size: 1.1em;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      display: inline-block;
-      margin-top: 30px;
-      transition: all 0.3s ease;
-      z-index: 1;
-    }
-    
-    .btn:hover {
-      background: var(--gold);
-      color: var(--charcoal);
-    }
-    
-    /* Sections */
-    section {
-      padding: 100px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-    
-    h2 {
-      font-size: 2.8em;
-      margin-bottom: 50px;
-      color: var(--charcoal);
-      text-align: center;
-      font-weight: 300;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      position: relative;
-    }
-    
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 2px;
-      background: var(--gold);
-    }
-    
-    /* Services */
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
-      margin-top: 50px;
-    }
-    
-    .service {
-      background: #fff;
-      padding: 40px 30px;
-      text-align: center;
-      border: 1px solid var(--silver);
-      transition: all 0.3s ease;
-      position: relative;
-    }
-    
-    .service:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-    
-    .service h3 {
-      font-size: 1.4em;
-      margin-bottom: 15px;
-      color: var(--charcoal);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    
-    .service p {
-      color: #666;
-      font-size: 1.1em;
-      margin-bottom: 20px;
-    }
-    
-    .price {
-      font-size: 1.3em;
-      color: var(--gold);
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-    
-    .service-link {
-      color: var(--charcoal);
-      text-decoration: none;
-      font-size: 0.9em;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      border-bottom: 1px solid var(--gold);
-      padding-bottom: 2px;
-      transition: all 0.3s ease;
-    }
-    
-    .service-link:hover {
-      color: var(--gold);
-    }
-    
-    /* Lien discret */
-    .discrete-booking {
-      text-align: center;
-      margin-top: 50px;
-      font-size: 1.2em;
-    }
-    
-    .text-link {
-      color: var(--gold);
-      text-decoration: none;
-      font-weight: bold;
-      transition: opacity 0.3s ease;
-    }
-    
-    .text-link:hover {
-      opacity: 0.8;
-    }
-    
-    /* Galerie */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      margin-top: 40px;
-    }
-    
-    .gallery img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-    
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-    
-    /* Contact */
-    .contact {
-      background: var(--dark-charcoal);
-      color: #fff;
-      text-align: center;
-    }
-    
-    .contact h2 {
-      color: #fff;
-    }
-    
-    .contact-info {
-      font-size: 1.3em;
-      line-height: 2.5;
-    }
-    
-    .contact-item {
-      margin: 15px 0;
-    }
-    
-    .contact-link {
-      color: var(--gold);
-      text-decoration: none;
-      transition: opacity 0.3s ease;
-    }
-    
-    .contact-link:hover {
-      opacity: 0.8;
-    }
-    
-    /* Footer */
-    footer {
-      background: #1a252f;
-      color: var(--silver);
-      text-align: center;
-      padding: 40px 20px;
-      font-size: 0.9em;
-      border-top: 1px solid var(--gold);
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.8em;
-      }
-      
-      section {
-        padding: 70px 20px;
-      }
-      
-      h2 {
-        font-size: 2.2em;
-      }
-      
-      .services {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width:480px){
+      .services{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr}
+      .contact-inner{flex-direction:column;align-items:center;max-width:520px;margin:0 auto}
+      .contact-item{width:100%;max-width:520px;flex:none}
     }
   </style>
 </head>
@@ -286,52 +103,56 @@
     <div class="service">
       <h3>Coupe Femme</h3>
       <p>Coupe et mise en pli selon vos envies</p>
-      <div class="price">À partir de 55€</div>
-      <a href="reservation.html" class="service-link">En savoir plus</a>
+      <div style="color:var(--gold);font-weight:700;margin-top:10px">À partir de 55€</div>
+      <a href="reservation.html" class="contact-link" style="margin-top:10px;display:inline-block">En savoir plus</a>
     </div>
     <div class="service">
       <h3>Coupe Homme</h3>
       <p>Coupe traditionnelle ou moderne</p>
-      <div class="price">À partir de 35€</div>
-      <a href="reservation.html" class="service-link">En savoir plus</a>
+      <div style="color:var(--gold);font-weight:700;margin-top:10px">À partir de 35€</div>
+      <a href="reservation.html" class="contact-link" style="margin-top:10px;display:inline-block">En savoir plus</a>
     </div>
     <div class="service">
       <h3>Coloration</h3>
       <p>Techniques expertes et produits premium</p>
-      <div class="price">À partir de 65€</div>
-      <a href="reservation.html" class="service-link">En savoir plus</a>
+      <div style="color:var(--gold);font-weight:700;margin-top:10px">À partir de 65€</div>
+      <a href="reservation.html" class="contact-link" style="margin-top:10px;display:inline-block">En savoir plus</a>
     </div>
   </div>
-  
-  <div class="discrete-booking">
-    <p>Un projet capillaire ? <a href="reservation.html" class="text-link">Discutons-en →</a></p>
+  <div style="text-align:center;margin-top:28px">
+    <a href="reservation.html" class="contact-link">Un projet ? Parlons-en →</a>
   </div>
 </section>
 
 <section>
   <h2>Notre Univers</h2>
   <div class="gallery">
-    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=400&q=80" alt="Salon de coiffure">
-    <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=400&q=80" alt="Coupe femme">
-    <img src="https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?auto=format&fit=crop&w=400&q=80" alt="Coupe homme">
-    <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=400&q=80" alt="Intérieur salon">
+    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=800&q=80" alt="Salon de coiffure">
+    <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=80" alt="Coupe femme">
+    <img src="https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?auto=format&fit=crop&w=800&q=80" alt="Coupe homme">
+    <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80" alt="Intérieur salon">
   </div>
 </section>
 
 <section class="contact">
   <h2>Contact & Accès</h2>
-  <div class="contact-info">
-    <div class="contact-item">
-      📍 12 Avenue Matignon, 75008 Paris
+  <div class="contact-inner" role="list">
+    <div class="contact-item" role="listitem" aria-label="Adresse">
+      <p>📍</p>
+      <p><strong>12 Avenue Matignon</strong></p>
+      <p>75008 Paris</p>
     </div>
-    <div class="contact-item">
-      📞 <a href="tel:0142567890" class="contact-link">01 42 56 78 90</a>
+
+    <div class="contact-item" role="listitem" aria-label="Téléphone">
+      <p>📞</p>
+      <p><a href="tel:+33142567890" class="contact-link">01 42 56 78 90</a></p>
+      <p style="color:#666;font-size:0.95em;margin-top:6px">Appel rapide</p>
     </div>
-    <div class="contact-item">
-      📧 <a href="mailto:contact@salonvalentin.fr" class="contact-link">contact@salonvalentin.fr</a>
-    </div>
-    <div class="contact-item">
-      💇 <a href="reservation.html" class="contact-link">Réserver ma coupe</a>
+
+    <div class="contact-item" role="listitem" aria-label="Email et réservation">
+      <p>📧</p>
+      <p><a href="mailto:contact@salonvalentin.fr" class="contact-link">contact@salonvalentin.fr</a></p>
+      <p style="margin-top:6px"><a href="reservation.html" class="contact-link">Réserver ma coupe</a></p>
     </div>
   </div>
 </section>
